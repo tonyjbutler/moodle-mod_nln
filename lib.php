@@ -236,7 +236,7 @@ function nln_get_coursemodule_info($coursemodule) {
     require_once("$CFG->dirroot/mod/nln/locallib.php");
 
     if (!$nln = $DB->get_record('nln', array('id'=>$coursemodule->instance),
-            'id, name, display, displayoptions, reference, intro, introformat')) {
+            'id, name, display, displayoptions, loid, intro, introformat')) {
         return NULL;
     }
 

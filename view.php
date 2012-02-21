@@ -67,7 +67,7 @@ if ($displaytype == RESOURCELIB_DISPLAY_OPEN) {
 if ($redirect) {
     // coming from course page or nln index page,
     // the redirection is needed for completion tracking and logging
-    $fullurl = url_get_full_url($url, $cm, $course);
+    $fullurl = nln_get_full_url($nln);
     redirect(str_replace('&amp;', '&', $fullurl));
 }
 

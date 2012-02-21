@@ -31,60 +31,18 @@ require_once("$CFG->libdir/resourcelib.php");
 require_once("$CFG->dirroot/mod/nln/lib.php");
 
 /**
- * Return full url with all extra parameters
+ * Return full url with NLN Learning Object ID
  *
  * This function does not include any XSS protection.
  *
- * @param string $url
- * @param object $cm
- * @param object $course
- * @param object $config
+ * @param string $nln
  * @return string url with & encoded as &amp;
  */
-function url_get_full_url($url, $cm, $course, $config=null) {
+function nln_get_full_url($nln) {
 
-    $parameters = empty($url->parameters) ? array() : unserialize($url->parameters);
+    $loid = rawurlencode($nln->loid);
 
-    // make sure there are no encoded entities, it is ok to do this twice
-    $fullurl = html_entity_decode($url->externalurl, ENT_QUOTES, 'UTF-8');
-
-    if (preg_match('/^(\/|https?:|ftp:)/i', $fullurl) or preg_match('|^/|', $fullurl)) {
-        // encode extra chars in URLs - this does not make it always valid, but it helps with some UTF-8 problems
-        $allowed = "a-zA-Z0-9".preg_quote(';/?:@=&$_.+!*(),-#%', '/');
-        $fullurl = preg_replace_callback("/[^$allowed]/", 'url_filter_callback', $fullurl);
-    } else {
-        // encode special chars only
-        $fullurl = str_replace('"', '%22', $fullurl);
-        $fullurl = str_replace('\'', '%27', $fullurl);
-        $fullurl = str_replace(' ', '%20', $fullurl);
-        $fullurl = str_replace('<', '%3C', $fullurl);
-        $fullurl = str_replace('>', '%3E', $fullurl);
-    }
-
-    // add variable url parameters
-    if (!empty($parameters)) {
-        if (!$config) {
-            $config = get_config('url');
-        }
-        $paramvalues = url_get_variable_values($url, $cm, $course, $config);
-
-        foreach ($parameters as $parse=>$parameter) {
-            if (isset($paramvalues[$parameter])) {
-                $parameters[$parse] = rawurlencode($parse).'='.rawurlencode($paramvalues[$parameter]);
-            } else {
-                unset($parameters[$parse]);
-            }
-        }
-
-        if (!empty($parameters)) {
-            if (stripos($fullurl, 'teamspeak://') === 0) {
-                $fullurl = $fullurl.'?'.implode('?', $parameters);
-            } else {
-                $join = (strpos($fullurl, '?') === false) ? '?' : '&';
-                $fullurl = $fullurl.$join.implode('&', $parameters);
-            }
-        }
-    }
+    $fullurl = 'http://www.nln.ac.uk/preview.asp?mode=noodle&loid='.$loid;
 
     // encode all & to &amp; entity
     $fullurl = str_replace('&', '&amp;', $fullurl);
@@ -93,100 +51,90 @@ function url_get_full_url($url, $cm, $course, $config=null) {
 }
 
 /**
- * Unicode encoding helper callback
- * @internal
- * @param array $matches
- * @return string
- */
-function url_filter_callback($matches) {
-    return rawurlencode($matches[0]);
-}
-
-/**
- * Print url header.
- * @param object $url
+ * Print nln header.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @return void
  */
-function url_print_header($url, $cm, $course) {
+function nln_print_header($nln, $cm, $course) {
     global $PAGE, $OUTPUT;
 
-    $PAGE->set_title($course->shortname.': '.$url->name);
+    $PAGE->set_title($course->shortname.': '.$nln->name);
     $PAGE->set_heading($course->fullname);
-    $PAGE->set_activity_record($url);
+    $PAGE->set_activity_record($nln);
     echo $OUTPUT->header();
 }
 
 /**
- * Print url heading.
- * @param object $url
+ * Print nln heading.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @param bool $ignoresettings print even if not specified in modedit
  * @return void
  */
-function url_print_heading($url, $cm, $course, $ignoresettings=false) {
+function nln_print_heading($nln, $cm, $course, $ignoresettings=false) {
     global $OUTPUT;
 
-    $options = empty($url->displayoptions) ? array() : unserialize($url->displayoptions);
+    $options = empty($nln->displayoptions) ? array() : unserialize($nln->displayoptions);
 
     if ($ignoresettings or !empty($options['printheading'])) {
-        echo $OUTPUT->heading(format_string($url->name), 2, 'main', 'urlheading');
+        echo $OUTPUT->heading(format_string($nln->name), 2, 'main', 'nlnheading');
     }
 }
 
 /**
- * Print url introduction.
- * @param object $url
+ * Print nln introduction.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @param bool $ignoresettings print even if not specified in modedit
  * @return void
  */
-function url_print_intro($url, $cm, $course, $ignoresettings=false) {
+function nln_print_intro($nln, $cm, $course, $ignoresettings=false) {
     global $OUTPUT;
 
-    $options = empty($url->displayoptions) ? array() : unserialize($url->displayoptions);
+    $options = empty($nln->displayoptions) ? array() : unserialize($nln->displayoptions);
     if ($ignoresettings or !empty($options['printintro'])) {
-        if (trim(strip_tags($url->intro))) {
-            echo $OUTPUT->box_start('mod_introbox', 'urlintro');
-            echo format_module_intro('url', $url, $cm->id);
+        if (trim(strip_tags($nln->intro))) {
+            echo $OUTPUT->box_start('mod_introbox', 'nlnintro');
+            echo format_module_intro('nln', $nln, $cm->id);
             echo $OUTPUT->box_end();
         }
     }
 }
 
 /**
- * Display url frames.
- * @param object $url
+ * Display nln frames.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @return does not return
  */
-function url_display_frame($url, $cm, $course) {
+function nln_display_frame($nln, $cm, $course) {
     global $PAGE, $OUTPUT, $CFG;
 
     $frame = optional_param('frameset', 'main', PARAM_ALPHA);
 
     if ($frame === 'top') {
         $PAGE->set_pagelayout('frametop');
-        url_print_header($url, $cm, $course);
-        url_print_heading($url, $cm, $course);
-        url_print_intro($url, $cm, $course);
+        nln_print_header($nln, $cm, $course);
+        nln_print_heading($nln, $cm, $course);
+        nln_print_intro($nln, $cm, $course);
         echo $OUTPUT->footer();
         die;
 
     } else {
-        $config = get_config('url');
+        $config = get_config('nln');
         $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-        $exteurl = url_get_full_url($url, $cm, $course, $config);
-        $navurl = "$CFG->wwwroot/mod/url/view.php?id=$cm->id&amp;frameset=top";
+        $exteurl = nln_get_full_url($nln);
+        $navurl = "$CFG->wwwroot/mod/nln/view.php?id=$cm->id&amp;frameset=top";
         $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
         $courseshortname = format_string($course->shortname, true, array('context' => $coursecontext));
-        $title = strip_tags($courseshortname.': '.format_string($url->name));
+        $title = strip_tags($courseshortname.': '.format_string($nln->name));
         $framesize = $config->framesize;
-        $modulename = s(get_string('modulename','url'));
+        $modulename = s(get_string('modulename','nln'));
         $dir = get_string('thisdirection', 'langconfig');
 
         $extframe = <<<EOF
@@ -210,25 +158,25 @@ EOF;
 }
 
 /**
- * Print url info and link.
- * @param object $url
+ * Print nln info and link.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @return does not return
  */
-function url_print_workaround($url, $cm, $course) {
+function nln_print_workaround($nln, $cm, $course) {
     global $OUTPUT;
 
-    url_print_header($url, $cm, $course);
-    url_print_heading($url, $cm, $course, true);
-    url_print_intro($url, $cm, $course, true);
+    nln_print_header($nln, $cm, $course);
+    nln_print_heading($nln, $cm, $course, true);
+    nln_print_intro($nln, $cm, $course, true);
 
-    $fullurl = url_get_full_url($url, $cm, $course);
+    $fullurl = nln_get_full_url($nln);
 
-    $display = url_get_final_display_type($url);
+    $display = nln_get_final_display_type($nln);
     if ($display == RESOURCELIB_DISPLAY_POPUP) {
         $jsfullurl = addslashes_js($fullurl);
-        $options = empty($url->displayoptions) ? array() : unserialize($url->displayoptions);
+        $options = empty($nln->displayoptions) ? array() : unserialize($nln->displayoptions);
         $width  = empty($options['popupwidth'])  ? 620 : $options['popupwidth'];
         $height = empty($options['popupheight']) ? 450 : $options['popupheight'];
         $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes";
@@ -241,8 +189,8 @@ function url_print_workaround($url, $cm, $course) {
         $extra = '';
     }
 
-    echo '<div class="urlworkaround">';
-    print_string('clicktoopen', 'url', "<a href=\"$fullurl\" $extra>$fullurl</a>");
+    echo '<div class="nlnworkaround">';
+    print_string('clicktoopen', 'nln', "<a href=\"$fullurl\" $extra>$fullurl</a>");
     echo '</div>';
 
     echo $OUTPUT->footer();
@@ -250,21 +198,20 @@ function url_print_workaround($url, $cm, $course) {
 }
 
 /**
- * Display embedded url file.
- * @param object $url
+ * Display embedded nln object.
+ * @param object $nln
  * @param object $cm
  * @param object $course
  * @return does not return
  */
-function url_display_embed($url, $cm, $course) {
+function nln_display_embed($nln, $cm, $course) {
     global $CFG, $PAGE, $OUTPUT;
 
-    $mimetype = resourcelib_guess_url_mimetype($url->externalurl);
-    $fullurl  = url_get_full_url($url, $cm, $course);
-    $title    = $url->name;
+    $fullurl  = nln_get_full_url($nln);
+    $title    = $nln->name;
 
     $link = html_writer::tag('a', $fullurl, array('href'=>str_replace('&amp;', '&', $fullurl)));
-    $clicktoopen = get_string('clicktoopen', 'url', $link);
+    $clicktoopen = get_string('clicktoopen', 'nln', $link);
 
     $extension = resourcelib_get_extension($url->externalurl);
 
