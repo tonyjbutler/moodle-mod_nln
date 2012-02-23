@@ -24,15 +24,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['clicktoopen'] = 'Click {$a} link to open resource.';
+$string['clicktoopen'] = 'Click {$a} link to launch learning object.';
 $string['configdisplayoptions'] = 'Select all options that should be available, existing settings are not modified. Hold CTRL key to select multiple fields.';
 $string['configframesize'] = 'When a web page or an uploaded file is displayed within a frame, this value is the height (in pixels) of the top frame (which contains the navigation).';
-$string['configrolesinparams'] = 'Enable if you want to include localized role names in list of available parameter variables.';
-$string['configsecretphrase'] = 'This secret phrase is used to produce encrypted code value that can be sent to some servers as a parameter.  The encrypted code is produced by an md5 value of the current user IP address concatenated with your secret phrase. ie code = md5(IP.secretphrase). Please note that this is not reliable because IP address may change and is often shared by different computers.';
 $string['contentheader'] = 'Content';
 $string['displayoptions'] = 'Available display options';
 $string['displayselect'] = 'Display';
-$string['displayselect_help'] = 'This setting, together with the learning object type and whether the browser allows embedding, determines how the learning object is displayed. Options may include:
+$string['displayselect_help'] = 'This setting, together with whether the browser allows embedding, determines how the learning object is displayed. Options may include:
 
 * Automatic - The best display option for the learning object is selected automatically
 * Embed - The learning object is displayed within the page below the navigation bar together with the learning object description and any blocks
@@ -42,14 +40,16 @@ $string['displayselect_help'] = 'This setting, together with the learning object
 * In frame - The learning object is displayed within a frame below the navigation bar and learning object description
 * New window - The learning object is displayed in a new browser window with menus and an address bar';
 $string['displayselectexplain'] = 'Choose display type, unfortunately not all types are suitable for all learning objects.';
-$string['externalurl'] = 'External URL';
 $string['framesize'] = 'Frame height';
-$string['invalidstoredurl'] = 'Cannot display this resource, URL is invalid.';
-$string['chooseavariable'] = 'Choose a variable...';
-$string['invalidurl'] = 'Entered URL is invalid';
+$string['invalidstorednln'] = 'Cannot display this learning object, ID is invalid.';
+$string['invalidnln'] = 'Entered learning object ID is invalid';
 $string['modulename'] = 'NLN learning object';
 $string['modulenameplural'] = 'NLN learning objects';
 $string['neverseen'] = 'Never seen';
+$string['nln_browse'] = 'Browse the NLN Materials';
+$string['nln_browse_help'] = 'Click this button to view the NLN Materials browser, which lets you browse, preview, and select an NLN learning object';
+$string['nln_loid'] = 'NLN learning object ID';
+$string['nln_required'] = 'Please select an NLN learning object by clicking the button below. If you do not wish to add a learning object, click the Cancel button below.';
 $string['optionsheader'] = 'Options';
 $string['page-mod-nln-x'] = 'Any NLN module page';
 $string['pluginadministration'] = 'NLN module administration';
@@ -64,4 +64,4 @@ $string['printintro'] = 'Display learning object description';
 $string['printintroexplain'] = 'Display learning object description below content? Some display types may not display description even if enabled.';
 $string['rolesinparams'] = 'Include role names in parameters';
 $string['serverurl'] = 'Server URL';
-$string['url:view'] = 'View URL';
+$string['nln:view'] = 'View NLN learning object';

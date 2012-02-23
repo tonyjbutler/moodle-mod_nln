@@ -55,6 +55,17 @@ $completion->set_module_viewed($cm);
 
 $PAGE->set_url('/mod/nln/view.php', array('id' => $cm->id));
 
+// Make sure NLN Learning Object ID exists before generating output
+$loid = trim($nln->loid);
+if (empty($loid)) {
+    nln_print_header($nln, $cm, $course);
+    nln_print_heading($nln, $cm, $course);
+    nln_print_intro($nln, $cm, $course);
+    notice(get_string('invalidstorednln', 'nln'), new moodle_url('/course/view.php', array('id'=>$cm->course)));
+    die;
+}
+unset($loid);
+
 $displaytype = nln_get_final_display_type($nln);
 if ($displaytype == RESOURCELIB_DISPLAY_OPEN) {
     // For 'open' links, we always redirect to the content - except if the user
@@ -73,12 +84,12 @@ if ($redirect) {
 
 switch ($displaytype) {
     case RESOURCELIB_DISPLAY_EMBED:
-        url_display_embed($url, $cm, $course);
+        nln_display_embed($nln, $cm, $course);
         break;
     case RESOURCELIB_DISPLAY_FRAME:
-        url_display_frame($url, $cm, $course);
+        nln_display_frame($nln, $cm, $course);
         break;
     default:
-        url_print_workaround($url, $cm, $course);
+        nln_print_workaround($nln, $cm, $course);
         break;
 }

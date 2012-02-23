@@ -11,7 +11,7 @@ echo 'document.getElementById(\'noodStart\').submit(); ';
 echo '}; </script></head>';
 echo '<body onload="go()">';
 echo '<div class="blk" id="blk"><h1 ><span class="n1">NLN</span> <span class="n2">Materials</span></h1></div>';
-echo '<p style="padding:20px; font-family: Verdana, Arial"><img align="absmiddle" src="busy.gif" /> Connecting to the NLN Materials browser...</p>';
+echo '<p style="padding:20px; font-family: Verdana, Arial"><img align="absmiddle" src="pix/busy.gif" /> Connecting to the NLN Materials browser...</p>';
 echo '<form id="noodStart" action="http://noodle.nln.ac.uk/noodle.asp?act=Start" method="post">';
 // bring in optional value for custom "add to moodle course" button text
 if(isset($CFG->noodleAddBtn))

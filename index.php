@@ -16,7 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * List of nlns in course
+ * List of NLN learning objects in course
  *
  * @package    mod
  * @subpackage nln

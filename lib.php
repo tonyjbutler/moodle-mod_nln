@@ -16,7 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Mandatory public API of nln module
+ * Mandatory public API of NLN module
  *
  * @package    mod
  * @subpackage nln
@@ -312,7 +312,7 @@ function nln_export_contents($cm, $baseurl) {
     $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
     $nln = $DB->get_record('nln', array('id'=>$cm->instance), '*', MUST_EXIST);
 
-    $fullurl = str_replace('&amp;', '&', nln_get_full_url($nln, $cm, $course));
+    $fullurl = str_replace('&amp;', '&', nln_get_full_url($nln));
     $isurl = clean_param($fullurl, PARAM_URL);
     if (empty($isurl)) {
         return null;
