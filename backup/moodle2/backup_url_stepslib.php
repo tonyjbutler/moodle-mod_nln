@@ -16,10 +16,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Define all the backup steps that will be used by the backup_url_activity_task
+ * Define all the backup steps that will be used by the backup_nln_activity_task
  *
  * @package    mod
- * @subpackage url
+ * @subpackage nln
  * @copyright  2010 onwards Andrew Davis
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,34 +27,34 @@
 defined('MOODLE_INTERNAL') || die;
 
  /**
- * Define the complete url structure for backup, with file and id annotations
+ * Define the complete nln structure for backup, with file and id annotations
  */
-class backup_url_activity_structure_step extends backup_activity_structure_step {
+class backup_nln_activity_structure_step extends backup_activity_structure_step {
 
     protected function define_structure() {
 
-        //the URL module stores no user info
+        //the NLN module stores no user info
 
         // Define each element separated
-        $url = new backup_nested_element('url', array('id'), array(
-            'name', 'intro', 'introformat', 'externalurl',
-            'display', 'displayoptions', 'parameters', 'timemodified'));
+        $nln = new backup_nested_element('nln', array('id'), array(
+            'name', 'intro', 'introformat', 'loid',
+            'display', 'displayoptions', 'timemodified'));
 
 
         // Build the tree
-        //nothing here for URLs
+        //nothing here for NLNs
 
         // Define sources
-        $url->set_source_table('url', array('id' => backup::VAR_ACTIVITYID));
+        $nln->set_source_table('nln', array('id' => backup::VAR_ACTIVITYID));
 
         // Define id annotations
         //module has no id annotations
 
         // Define file annotations
-        $url->annotate_files('mod_url', 'intro', null); // This file area hasn't itemid
+        $nln->annotate_files('mod_nln', 'intro', null); // This file area hasn't itemid
 
-        // Return the root element (url), wrapped into standard activity structure
-        return $this->prepare_activity_structure($url);
+        // Return the root element (nln), wrapped into standard activity structure
+        return $this->prepare_activity_structure($nln);
 
     }
 }

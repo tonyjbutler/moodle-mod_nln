@@ -24,13 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/url/backup/moodle2/restore_url_stepslib.php'); // Because it exists (must)
+require_once($CFG->dirroot . '/mod/nln/backup/moodle2/restore_nln_stepslib.php'); // Because it exists (must)
 
 /**
- * url restore task that provides all the settings and steps to perform one
+ * nln restore task that provides all the settings and steps to perform one
  * complete restore of the activity
  */
-class restore_url_activity_task extends restore_activity_task {
+class restore_nln_activity_task extends restore_activity_task {
 
     /**
      * Define (add) particular settings this activity can have
@@ -43,8 +43,8 @@ class restore_url_activity_task extends restore_activity_task {
      * Define (add) particular steps this activity can have
      */
     protected function define_my_steps() {
-        // url only has one structure step
-        $this->add_step(new restore_url_activity_structure_step('url_structure', 'url.xml'));
+        // nln only has one structure step
+        $this->add_step(new restore_nln_activity_structure_step('nln_structure', 'nln.xml'));
     }
 
     /**
@@ -54,7 +54,7 @@ class restore_url_activity_task extends restore_activity_task {
     static public function define_decode_contents() {
         $contents = array();
 
-        $contents[] = new restore_decode_content('url', array('intro', 'externalurl'), 'url');
+        $contents[] = new restore_decode_content('nln', array('intro', 'loid'), 'nln');
 
         return $contents;
     }
@@ -66,9 +66,9 @@ class restore_url_activity_task extends restore_activity_task {
     static public function define_decode_rules() {
         $rules = array();
 
-        $rules[] = new restore_decode_rule('URLINDEX', '/mod/url/index.php?id=$1', 'course');
-        $rules[] = new restore_decode_rule('URLVIEWBYID', '/mod/url/view.php?id=$1', 'course_module');
-        $rules[] = new restore_decode_rule('URLVIEWBYU', '/mod/url/view.php?u=$1', 'url');
+        $rules[] = new restore_decode_rule('NLNINDEX', '/mod/nln/index.php?id=$1', 'course');
+        $rules[] = new restore_decode_rule('NLNVIEWBYID', '/mod/nln/view.php?id=$1', 'course_module');
+        $rules[] = new restore_decode_rule('NLNVIEWBYU', '/mod/nln/view.php?u=$1', 'nln');
 
         return $rules;
 
@@ -77,15 +77,15 @@ class restore_url_activity_task extends restore_activity_task {
     /**
      * Define the restore log rules that will be applied
      * by the {@link restore_logs_processor} when restoring
-     * url logs. It must return one array
+     * nln logs. It must return one array
      * of {@link restore_log_rule} objects
      */
     static public function define_restore_log_rules() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('url', 'add', 'view.php?id={course_module}', '{url}');
-        $rules[] = new restore_log_rule('url', 'update', 'view.php?id={course_module}', '{url}');
-        $rules[] = new restore_log_rule('url', 'view', 'view.php?id={course_module}', '{url}');
+        $rules[] = new restore_log_rule('nln', 'add', 'view.php?id={course_module}', '{nln}');
+        $rules[] = new restore_log_rule('nln', 'update', 'view.php?id={course_module}', '{nln}');
+        $rules[] = new restore_log_rule('nln', 'view', 'view.php?id={course_module}', '{nln}');
 
         return $rules;
     }
@@ -103,7 +103,7 @@ class restore_url_activity_task extends restore_activity_task {
     static public function define_restore_log_rules_for_course() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('url', 'view all', 'index.php?id={course}', null);
+        $rules[] = new restore_log_rule('nln', 'view all', 'index.php?id={course}', null);
 
         return $rules;
     }
