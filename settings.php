@@ -46,7 +46,7 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('nln/framesize',
         get_string('framesize', 'nln'), get_string('configframesize', 'nln'), 130, PARAM_INT));
     $settings->add(new admin_setting_configcheckbox('nln/requiremodintro',
-        get_string('requiremodintro', 'admin'), get_string('configrequiremodintro', 'admin'), 1));
+        get_string('requiremodintro', 'admin'), get_string('configrequiremodintro', 'admin'), 0));
     $settings->add(new admin_setting_configmultiselect('nln/displayoptions',
         get_string('displayoptions', 'nln'), get_string('configdisplayoptions', 'nln'),
         $defaultdisplayoptions, $displayoptions));
@@ -65,8 +65,8 @@ if ($ADMIN->fulltree) {
         array('value'=>RESOURCELIB_DISPLAY_AUTO, 'adv'=>false), $displayoptions));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupwidth',
         get_string('popupwidth', 'nln'), get_string('popupwidthexplain', 'nln'),
-        array('value'=>620, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>850, 'adv'=>true), PARAM_INT, 7));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupheight',
         get_string('popupheight', 'nln'), get_string('popupheightexplain', 'nln'),
-        array('value'=>450, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>540, 'adv'=>true), PARAM_INT, 7));
 }

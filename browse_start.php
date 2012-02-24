@@ -5,7 +5,7 @@ echo '<style>BODY{background-color:#D3D3D3;font: "Verdana" 12px black;font-weigh
 echo 'H1 {font-size: 26px;font-family: "Trebuchet MS", "Bliss", "Arial";padding: 10px;text-transform: lowercase;margin: 0px; font-weight:bold;} ';
 echo '.n1 {color:#F5851F; font-style:italic;} .n2 {color:#636466;} </style><script> ';
 echo 'function go() { document.getElementById(\'url\').value=document.location; ';
-echo 'document.getElementById(\'currId\').value=window.opener.document.getElementById(\'id_reference\').value; ';
+echo 'document.getElementById(\'currId\').value=window.opener.document.getElementById(\'id_loid\').value; ';
 // comment out the following line to prevent automatic forwarding to the Noodle site
 echo 'document.getElementById(\'noodStart\').submit(); ';
 echo '}; </script></head>';

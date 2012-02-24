@@ -38,7 +38,7 @@ class mod_nln_mod_form extends moodleform_mod {
 
         //-------------------------------------------------------
         $mform->addElement('header', 'general', get_string('general', 'form'));
-        $mform->addElement('text', 'name', get_string('name'), array('size'=>'48'));
+        $mform->addElement('text', 'name', get_string('name'), array('size'=>'60'));
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
         } else {
@@ -50,12 +50,12 @@ class mod_nln_mod_form extends moodleform_mod {
         //-------------------------------------------------------
         $mform->addElement('header', 'content', get_string('contentheader', 'nln'));
         $mform->addElement('button', 'browsebutton', get_string('nln_browse', 'nln').'...', array('title'=>get_string('nln_browse_help', 'nln'),
-			'onclick'=>"window.open('browse_start.php', 'nlnbrowse', 'width=790,height=590,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;"));
+			'onclick'=>"window.open('/mod/nln/browse_start.php', 'nlnbrowse', 'width=790,height=590,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;"));
         $mform->addHelpButton('browsebutton', 'nln_browse', 'nln');
-        $mform->addElement('text', 'loid', get_string('nln_loid', 'nln'), array('size'=>'60', 'readonly'=>true));
+        $mform->addElement('text', 'loid', get_string('nln_loid', 'nln'), array('size'=>'48', 'readonly'=>'readonly'));
         $mform->addRule('loid', get_string('nln_required', 'nln'), 'required', null, 'client');
         $mform->addRule('loid', get_string('invalidnln', 'nln'), 'regex', '/^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$/i', 'client');
-        $mform->hardFreeze('loid');
+        //$mform->hardFreeze('loid');
 
         //-------------------------------------------------------
         $mform->addElement('header', 'optionssection', get_string('optionsheader', 'nln'));
