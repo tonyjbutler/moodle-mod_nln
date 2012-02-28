@@ -37,8 +37,8 @@ if ($ADMIN->fulltree) {
                                                            RESOURCELIB_DISPLAY_POPUP,
                                                           ));
     $defaultdisplayoptions = array(RESOURCELIB_DISPLAY_AUTO,
-                                   RESOURCELIB_DISPLAY_EMBED,
                                    RESOURCELIB_DISPLAY_OPEN,
+                                   RESOURCELIB_DISPLAY_NEW,
                                    RESOURCELIB_DISPLAY_POPUP,
                                   );
 
@@ -65,8 +65,8 @@ if ($ADMIN->fulltree) {
         array('value'=>RESOURCELIB_DISPLAY_AUTO, 'adv'=>false), $displayoptions));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupwidth',
         get_string('popupwidth', 'nln'), get_string('popupwidthexplain', 'nln'),
-        array('value'=>850, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>1000, 'adv'=>true), PARAM_INT, 7));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupheight',
         get_string('popupheight', 'nln'), get_string('popupheightexplain', 'nln'),
-        array('value'=>540, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>600, 'adv'=>true), PARAM_INT, 7));
 }

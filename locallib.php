@@ -177,8 +177,8 @@ function nln_print_workaround($nln, $cm, $course) {
     if ($display == RESOURCELIB_DISPLAY_POPUP) {
         $jsfullurl = addslashes_js($fullurl);
         $options = empty($nln->displayoptions) ? array() : unserialize($nln->displayoptions);
-        $width  = empty($options['popupwidth'])  ? 850 : $options['popupwidth'];
-        $height = empty($options['popupheight']) ? 540 : $options['popupheight'];
+        $width  = empty($options['popupwidth'])  ? 1000 : $options['popupwidth'];
+        $height = empty($options['popupheight']) ? 600 : $options['popupheight'];
         $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes";
         $extra = "onclick=\"window.open('$jsfullurl', '', '$wh'); return false;\"";
 

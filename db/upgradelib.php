@@ -80,18 +80,12 @@ function nln_20_migrate() {
         $nln->name         = $candidate->name;
         $nln->intro        = $intro;
         $nln->introformat  = $introformat;
-        $nln->loid  = $path;
+        $nln->loid         = $path;
         $nln->timemodified = time();
 
-        $options    = array('printheading'=>0, 'printintro'=>1);
+        $options = array('printheading'=>0, 'printintro'=>1);
 
-        if ($candidate->options == 'frame') {
-            $nln->display = RESOURCELIB_DISPLAY_FRAME;
-
-        } else if ($candidate->options == 'objectframe') {
-            $nln->display = RESOURCELIB_DISPLAY_EMBED;
-
-        } else if ($candidate->popup) {
+        if ($candidate->popup) {
             $nln->display = RESOURCELIB_DISPLAY_POPUP;
             if ($candidate->popup) {
                 $rawoptions = explode(',', $candidate->popup);

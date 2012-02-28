@@ -57,13 +57,7 @@ class moodle1_mod_nln_handler extends moodle1_resource_successor_handler {
 
         // populate display and displayoptions fields
         $options = array('printheading' => 0, 'printintro' => 1);
-        if ($data['options'] == 'frame') {
-            $nln['display'] = RESOURCELIB_DISPLAY_FRAME;
-
-        } else if ($data['options'] == 'objectframe') {
-            $nln['display'] = RESOURCELIB_DISPLAY_EMBED;
-
-        } else if ($data['popup']) {
+        if ($data['popup']) {
             $nln['display'] = RESOURCELIB_DISPLAY_POPUP;
             $rawoptions = explode(',', $data['popup']);
             foreach ($rawoptions as $rawoption) {
