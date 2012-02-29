@@ -248,8 +248,8 @@ function nln_get_coursemodule_info($coursemodule) {
     if ($display == RESOURCELIB_DISPLAY_POPUP) {
         $fullurl = "$CFG->wwwroot/mod/nln/view.php?id=$coursemodule->id&amp;redirect=1";
         $options = empty($nln->displayoptions) ? array() : unserialize($nln->displayoptions);
-        $width  = empty($options['popupwidth'])  ? 1000 : $options['popupwidth'];
-        $height = empty($options['popupheight']) ? 600 : $options['popupheight'];
+        $width  = empty($options['popupwidth'])  ? 840 : $options['popupwidth'];
+        $height = empty($options['popupheight']) ? 530 : $options['popupheight'];
         $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes";
         $info->onclick = "window.open('$fullurl', '', '$wh'); return false;";
 

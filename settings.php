@@ -65,8 +65,8 @@ if ($ADMIN->fulltree) {
         array('value'=>RESOURCELIB_DISPLAY_AUTO, 'adv'=>false), $displayoptions));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupwidth',
         get_string('popupwidth', 'nln'), get_string('popupwidthexplain', 'nln'),
-        array('value'=>1000, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>840, 'adv'=>true), PARAM_INT, 7));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupheight',
         get_string('popupheight', 'nln'), get_string('popupheightexplain', 'nln'),
-        array('value'=>600, 'adv'=>true), PARAM_INT, 7));
+        array('value'=>530, 'adv'=>true), PARAM_INT, 7));
 }
