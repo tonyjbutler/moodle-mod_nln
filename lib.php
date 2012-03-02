@@ -97,7 +97,7 @@ function nln_add_instance($data, $mform) {
         $displayoptions['popupwidth']  = $data->popupwidth;
         $displayoptions['popupheight'] = $data->popupheight;
     }
-    if (in_array($data->display, array(RESOURCELIB_DISPLAY_AUTO, RESOURCELIB_DISPLAY_EMBED, RESOURCELIB_DISPLAY_FRAME))) {
+    if (in_array($data->display, array(RESOURCELIB_DISPLAY_EMBED, RESOURCELIB_DISPLAY_FRAME))) {
         $displayoptions['printheading'] = (int)!empty($data->printheading);
         $displayoptions['printintro']   = (int)!empty($data->printintro);
     }
@@ -125,7 +125,7 @@ function nln_update_instance($data, $mform) {
         $displayoptions['popupwidth']  = $data->popupwidth;
         $displayoptions['popupheight'] = $data->popupheight;
     }
-    if (in_array($data->display, array(RESOURCELIB_DISPLAY_AUTO, RESOURCELIB_DISPLAY_EMBED, RESOURCELIB_DISPLAY_FRAME))) {
+    if (in_array($data->display, array(RESOURCELIB_DISPLAY_EMBED, RESOURCELIB_DISPLAY_FRAME))) {
         $displayoptions['printheading'] = (int)!empty($data->printheading);
         $displayoptions['printintro']   = (int)!empty($data->printintro);
     }

@@ -55,7 +55,6 @@ class mod_nln_mod_form extends moodleform_mod {
         $mform->addElement('text', 'loid', get_string('nln_loid', 'nln'), array('size'=>'48', 'readonly'=>'readonly'));
         $mform->addRule('loid', get_string('nln_required', 'nln'), 'required', null, 'client');
         $mform->addRule('loid', get_string('invalidnln', 'nln'), 'regex', '/^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$/i', 'client');
-        //$mform->hardFreeze('loid');
 
         //-------------------------------------------------------
         $mform->addElement('header', 'optionssection', get_string('optionsheader', 'nln'));
@@ -95,9 +94,8 @@ class mod_nln_mod_form extends moodleform_mod {
             $mform->setAdvanced('popupheight', $config->popupheight_adv);
         }
 
-        if (array_key_exists(RESOURCELIB_DISPLAY_AUTO, $options) or
-          array_key_exists(RESOURCELIB_DISPLAY_EMBED, $options) or
-          array_key_exists(RESOURCELIB_DISPLAY_FRAME, $options)) {
+        if (array_key_exists(RESOURCELIB_DISPLAY_EMBED, $options) or
+            array_key_exists(RESOURCELIB_DISPLAY_FRAME, $options)) {
             $mform->addElement('checkbox', 'printheading', get_string('printheading', 'nln'));
             $mform->disabledIf('printheading', 'display', 'eq', RESOURCELIB_DISPLAY_POPUP);
             $mform->disabledIf('printheading', 'display', 'eq', RESOURCELIB_DISPLAY_OPEN);

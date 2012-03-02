@@ -22,7 +22,7 @@ For practitioners:
 
 Full information about Noodle, including any updates and new versions, is available at [http://www.nln.ac.uk/?p=Noodle]
 
-This is version 1.1.
+This is version 2.0.
 
 
 Version Info
@@ -38,6 +38,10 @@ V1.0 - a significant update, with significant updates to this readme, and change
    - adds the ability to customise the text of the "add to Moodle course" button within Noodle. (See customisation section below.)
    - uses a new URL within browse_start.php (noodle.nln.ac.uk rather than www.nln.ac.uk). (Both point to the same location, but the new URL helps us with tracking usage.)
 V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at http://nln.ac.uk/support/?p=FAQ#i_Transition for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
+V2.0 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
+     - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
+     - backup/restore functionality, including restoring from a Moodle 1.9 backup.
+     - incompatible framed and embedded display options removed.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
 
