@@ -40,7 +40,7 @@ V1.0 - a significant update, with significant updates to this readme, and change
 V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at http://nln.ac.uk/support/?p=FAQ#i_Transition for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
 V2.0 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
      - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
-     - backup/restore functionality, including restoring from a Moodle 1.9 backup.
+     - supports backup/restore functionality, including restoring from a Moodle 1.9 backup.
      - incompatible framed and embedded display options removed.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
