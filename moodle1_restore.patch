@@ -1,0 +1,14 @@
+diff --git a/mod/resource/backup/moodle1/lib.php b/mod/resource/backup/moodle1/lib.php
+index cb3fea3..9507e81 100644
+--- a/mod/resource/backup/moodle1/lib.php
++++ b/mod/resource/backup/moodle1/lib.php
+@@ -264,6 +264,9 @@ class moodle1_mod_resource_handler extends moodle1_mod_handler {
+                     $name = null;
+                 }
+                 break;
++            case 'nln':
++                $name = 'nln';
++                break;
+             default:
+                 throw new moodle1_convert_exception('unknown_resource_successor', $type);
+         }

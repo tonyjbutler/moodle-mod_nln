@@ -14,13 +14,13 @@ For administrators:
 
 For practitioners:
 - no need to log-in separately
-- powerful search and browse functionality, specifically tailored for the NLN Materials (eg. browse by level)
+- powerful search and browse functionality, specifically tailored for the NLN Materials (e.g. browse by level)
 - easy access to supporting information, such as tutor guides, LO-specific FAQ questions etc.
 - no need to leave the Moodle interface
 - no need to understand Scorm and related technologies
 - no need to deal with any downloading/unzipping/uploading/or installing of files
 
-Full information about Noodle, including any updates and new versions, is available at [http://www.nln.ac.uk/?p=Noodle]
+More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
 
 This is version 2.0.
 
@@ -40,7 +40,7 @@ V1.0 - a significant update, with significant updates to this readme, and change
 V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at http://nln.ac.uk/support/?p=FAQ#i_Transition for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
 V2.0 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
      - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
-     - supports backup/restore functionality, including restoring from a Moodle 1.9 backup.
+     - supports backup/restore functionality, including restoring from a Moodle 1.9 backup (see "Installation" section below).
      - incompatible framed and embedded display options removed.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
@@ -62,48 +62,43 @@ Noodle was developed by Xtensis during their role as developers of the service, 
 
 Installation
 ------------
-Note, if you are upgrading an existing Noodle installation, please see the "Version info" section above.
+Note, if you are upgrading an existing Noodle installation, please see the "Version Info" section above.
 
-Installation is simple:
-1. Create a new folder in your Moodle install called "nln" within "/mod/resource/type/".
-2. Unzip the contents of this zip into it.
-3. Finally, open the file "/lang/en_utf8/resource.php" and add the following five lines before the final "?>".
+Installing from the Git repository (recommended if you installed Moodle from Git):
+Follow the instructions at [http://docs.moodle.org/22/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository], e.g. for the Moodle 2.2.x code:
+$ cd /path/to/your/moodle/
+$ cd mod
+$ git clone git://github.com/tonyjbutler/moodle-mod_nln.git nln
+$ cd nln
+$ git checkout -b MOODLE_22_STABLE origin/MOODLE_22_STABLE
+$ git branch -d master
+$ cd /path/to/your/moodle/
+$ echo /mod/nln/ >> .git/info/exclude
 
-$string['resourcetypenln'] = 'NLN Learning Object';
-$string['nln_browse'] = 'Browse the NLN Materials';
-$string['nln_browsedescrip'] = 'Click this button to view the NLN Materials browser, which lets you browse, preview, and select an NLN Learning Object';
-$string['nln_guid'] = 'NLN Learning Object ID';
-$string['nln_required'] = 'Please select an NLN Learning Object by clicking the button below. If you do not wish to add an NLN LO, click the Cancel button below.';
+Installing from a zip archive downloaded from [http://moodle.org/plugins/pluginversions.php?plugin=mod_nln]:
+1. Create a new folder in your Moodle install called "nln" within "/mod/".
+2. Unzip the contents of the downloaded zip archive into it.
 
-These provide the text for the various custom bits of interface exposed by Noodle - feel free to edit them if you wish. Respectively, they represent:
-	1. The entry in the drop-down list of resource types that can be added to a course
-	2. The caption of the browse button on the resource page
-	3. The pop-up hint when hovering over the browse button
-	4. The caption next to the read-only edit box that contains the NLN Learning Object's unique ID
-	5. A message to be displayed if the user tries to "OK" the resource page without choosing an NLN LO
+Whichever of the above methods you use to get the module code in place, the final step is to visit your Site Administration > Notifications page in a browser to invoke the installation script and make the necessary database changes.
 
-Note that as this affects a file within Moodle itself, whenever you upgrade to a new Moodle version this change will be reset, so you will need to repeat Step 3 whenever you move to a new Moodle version.
-
-Finally, you may wish to visit the "resource defaults" page, to review/edit the default properties for resource pop-up windows (and whether to use a pop-up or embed the resource within the Moodle interface). If you have never visited this page and saved the changes, you may find that no defaults have been set at all. To visit the resource defaults page, from your Moodle home page find the "Site administration" block and navigate through the menu to Modules/Activities/Resource.
+Note: if you wish to restore NLN resources from course backups created with Moodle 1.9.x, you will also need to make a slight modification to your /mod/resource/backup/moodle1/lib.php file.
+A diff patch named moodle1_restore.patch is supplied in the root directory of the NLN module to facilitate this modification. Please see the instructions at [http://docs.moodle.org/dev/How_to_apply_a_patch] if you need help applying the patch.
 
 
 Updating Moodle
 -------- ------
-If upgrading Moodle itself to a new version, any existing Noodle installation should continue to work EXCEPT that Moodle's language string file will likely be overwritten, so you will probably need to repeat step 3 of the installation procedure given below.
+If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/22/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
+$ cd /path/to/your/moodle/
+$ git pull
+$ cd mod/nln
+$ git pull
+
+In this case it will not be necessary to apply the diff patch again.
+
+If you installed from a zip archive you will need to repeat the installation procedure using the appropriate zip file downloaded from [http://moodle.org/plugins/pluginversions.php?plugin=mod_nln] for your new Moodle version.
+In this case you will also need to re-apply the patch as above, if you still need the functionality to restore from Moodle 1.9 backups.
+
 
 Informing Moodle users
 --------- ------ -----
-After installing, we suggest notifying your Moodle course editors and letting them know what's available. You can find simplified instructions - which presume no prior knowledge of the NLN materials or the main NLN site - by clicking the "About the NLN Materials Browser" link at the foot of the first page within Noodle. It is suggested that Moodle admins take the concise instructions given there and distribute them, with any relevant modifications, to their users.
- 
-
-Technical Description
---------- -----------
-Moodle has a flexible architecture for adding new resource types. The installation of Noodle simply adds a new available resource type, available for practitioners by choosing "NLN Learning Object" from the options available in the "add a resource" drop-down list. Installation requires no modifications to the database structure within Moodle, and does not interfere with any local repository, or any NLN materials already downloaded/installed/deployed via any other method. When a practitioner adds a resource of the new "nln" type, a new row is added to the "resources" table. The unique identifier of the LO that was chosen by the practitioner using the NLN browser is stored in the resource's "reference" field. The "popup" and "options" fields describe the display options, using much the same values as the built-in file/web resource type.
-
-The installation contains the following:
- - readme.txt - this file.
- - resource.class.php - defines the new NLN resource type to Moodle
- - browse_start.php - is launched in a pop-up window, and, while showing a loading screen, passes the configuration values to, and launches, the special version of the NLN site.
- - browse_end.php - launched at the end of the browsing process, uses client-side scripting to populate the main Moodle window with the ID, title and description of the selected NLN LO.
-(Previous versions had a nln_config.php file, which held authentication parameters, and is no longer required.)
-
+After installing, we suggest notifying your Moodle course editors and letting them know what's available. You can find simplified instructions - which presume no prior knowledge of the NLN materials or the main NLN site - at [http://nln.ac.uk/?p=Noodle]. It is suggested that Moodle admins take the concise instructions given there and distribute them, with any relevant modifications, to their users.
