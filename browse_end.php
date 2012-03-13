@@ -21,7 +21,7 @@ function init()
 			document.getElementById('err').innerHTML = goneErr;
 			return(0);
 			};
-		d.getElementById('id_loid').value = '<?php echo $xtid ?>';
+		d.getElementById('id_reference').value = '<?php echo $xtid ?>';
 		d.getElementById('id_name').value = '<?php echo $title ?>';
 	  	var gBox = d.getElementById('general');
 	  	if(gBox)
