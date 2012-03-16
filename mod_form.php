@@ -48,16 +48,16 @@ class mod_nln_mod_form extends moodleform_mod {
         $this->add_intro_editor($config->requiremodintro);
 
         //-------------------------------------------------------
-        $mform->addElement('header', 'content', get_string('contentheader', 'nln'));
-        $mform->addElement('button', 'browsebutton', get_string('nln_browse', 'nln').'...', array('title'=>get_string('nln_browse_help', 'nln'),
+        $mform->addElement('header', 'content', get_string('contentheader', 'mod_nln'));
+        $mform->addElement('button', 'browsebutton', get_string('nln_browse', 'mod_nln').'...', array('title'=>get_string('nln_browse_help', 'mod_nln'),
 			'onclick'=>"window.open('/mod/nln/browse_start.php', 'nlnbrowse', 'width=790,height=590,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;"));
         $mform->addHelpButton('browsebutton', 'nln_browse', 'nln');
-        $mform->addElement('text', 'loid', get_string('nln_loid', 'nln'), array('size'=>'48', 'readonly'=>'readonly'));
-        $mform->addRule('loid', get_string('nln_required', 'nln'), 'required', null, 'client');
-        $mform->addRule('loid', get_string('invalidnln', 'nln'), 'regex', '/^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$/i', 'client');
+        $mform->addElement('text', 'loid', get_string('nln_loid', 'mod_nln'), array('size'=>'48', 'readonly'=>'readonly'));
+        $mform->addRule('loid', get_string('nln_required', 'mod_nln'), 'required', null, 'client');
+        $mform->addRule('loid', get_string('invalidnln', 'mod_nln'), 'regex', '/^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$/i', 'client');
 
         //-------------------------------------------------------
-        $mform->addElement('header', 'optionssection', get_string('optionsheader', 'nln'));
+        $mform->addElement('header', 'optionssection', get_string('optionsheader', 'mod_nln'));
 
         if ($this->current->instance) {
             $options = resourcelib_get_displayoptions(explode(',', $config->displayoptions), $this->current->display);
@@ -70,14 +70,14 @@ class mod_nln_mod_form extends moodleform_mod {
             reset($options);
             $mform->setDefault('display', key($options));
         } else {
-            $mform->addElement('select', 'display', get_string('displayselect', 'nln'), $options);
+            $mform->addElement('select', 'display', get_string('displayselect', 'mod_nln'), $options);
             $mform->setDefault('display', $config->display);
             $mform->setAdvanced('display', $config->display_adv);
             $mform->addHelpButton('display', 'displayselect', 'nln');
         }
 
         if (array_key_exists(RESOURCELIB_DISPLAY_POPUP, $options)) {
-            $mform->addElement('text', 'popupwidth', get_string('popupwidth', 'nln'), array('size'=>3));
+            $mform->addElement('text', 'popupwidth', get_string('popupwidth', 'mod_nln'), array('size'=>3));
             if (count($options) > 1) {
                 $mform->disabledIf('popupwidth', 'display', 'noteq', RESOURCELIB_DISPLAY_POPUP);
             }
@@ -85,7 +85,7 @@ class mod_nln_mod_form extends moodleform_mod {
             $mform->setDefault('popupwidth', $config->popupwidth);
             $mform->setAdvanced('popupwidth', $config->popupwidth_adv);
 
-            $mform->addElement('text', 'popupheight', get_string('popupheight', 'nln'), array('size'=>3));
+            $mform->addElement('text', 'popupheight', get_string('popupheight', 'mod_nln'), array('size'=>3));
             if (count($options) > 1) {
                 $mform->disabledIf('popupheight', 'display', 'noteq', RESOURCELIB_DISPLAY_POPUP);
             }
@@ -96,14 +96,14 @@ class mod_nln_mod_form extends moodleform_mod {
 
         if (array_key_exists(RESOURCELIB_DISPLAY_EMBED, $options) or
             array_key_exists(RESOURCELIB_DISPLAY_FRAME, $options)) {
-            $mform->addElement('checkbox', 'printheading', get_string('printheading', 'nln'));
+            $mform->addElement('checkbox', 'printheading', get_string('printheading', 'mod_nln'));
             $mform->disabledIf('printheading', 'display', 'eq', RESOURCELIB_DISPLAY_POPUP);
             $mform->disabledIf('printheading', 'display', 'eq', RESOURCELIB_DISPLAY_OPEN);
             $mform->disabledIf('printheading', 'display', 'eq', RESOURCELIB_DISPLAY_NEW);
             $mform->setDefault('printheading', $config->printheading);
             $mform->setAdvanced('printheading', $config->printheading_adv);
 
-            $mform->addElement('checkbox', 'printintro', get_string('printintro', 'nln'));
+            $mform->addElement('checkbox', 'printintro', get_string('printintro', 'mod_nln'));
             $mform->disabledIf('printintro', 'display', 'eq', RESOURCELIB_DISPLAY_POPUP);
             $mform->disabledIf('printintro', 'display', 'eq', RESOURCELIB_DISPLAY_OPEN);
             $mform->disabledIf('printintro', 'display', 'eq', RESOURCELIB_DISPLAY_NEW);
@@ -142,15 +142,15 @@ class mod_nln_mod_form extends moodleform_mod {
         // Validating entered NLN Learning Object ID
 
         if (empty($data['loid'])) {
-            $errors['loid'] = get_string('nln_required', 'nln');
+            $errors['loid'] = get_string('nln_required', 'mod_nln');
 
         } else {
             $loid = trim($data['loid']);
             if (empty($loid)) {
-                $errors['loid'] = get_string('nln_required', 'nln');
+                $errors['loid'] = get_string('nln_required', 'mod_nln');
 
             } else if (!preg_match('/^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$/i', $loid)) {
-                $errors['loid'] = get_string('invalidnln', 'nln');
+                $errors['loid'] = get_string('invalidnln', 'mod_nln');
             }
         }
         return $errors;

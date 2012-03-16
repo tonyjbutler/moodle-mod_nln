@@ -294,7 +294,7 @@ function nln_extend_navigation($navigation, $course, $module, $cm) {
  * @param stdClass $currentcontext Current context of block
  */
 function nln_page_type_list($pagetype, $parentcontext, $currentcontext) {
-    $module_pagetype = array('mod-nln-*'=>get_string('page-mod-nln-x', 'nln'));
+    $module_pagetype = array('mod-nln-*'=>get_string('page-mod-nln-x', 'mod_nln'));
     return $module_pagetype;
 }
 

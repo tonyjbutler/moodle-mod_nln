@@ -61,7 +61,7 @@ if (empty($loid)) {
     nln_print_header($nln, $cm, $course);
     nln_print_heading($nln, $cm, $course);
     nln_print_intro($nln, $cm, $course);
-    notice(get_string('invalidstorednln', 'nln'), new moodle_url('/course/view.php', array('id'=>$cm->course)));
+    notice(get_string('invalidstorednln', 'mod_nln'), new moodle_url('/course/view.php', array('id'=>$cm->course)));
     die;
 }
 unset($loid);

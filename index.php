@@ -35,8 +35,8 @@ $PAGE->set_pagelayout('incourse');
 
 add_to_log($course->id, 'nln', 'view all', "index.php?id=$course->id", '');
 
-$strnln       = get_string('modulename', 'nln');
-$strnlns      = get_string('modulenameplural', 'nln');
+$strnln          = get_string('modulename', 'mod_nln');
+$strnlns         = get_string('modulenameplural', 'mod_nln');
 $strsectionname  = get_string('sectionname', 'format_'.$course->format);
 $strname         = get_string('name');
 $strintro        = get_string('moduleintro');
