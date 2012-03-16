@@ -1,4 +1,3 @@
-
 Readme file for the NLN Materials Moodle Browser (codename: Noodle)
 ====== ==== === === === ========= ====== ======= ========== =======
 
@@ -22,7 +21,7 @@ For practitioners:
 
 More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
 
-This is version 2.0.
+This is version 2.2.
 
 
 Version Info
@@ -32,16 +31,16 @@ V0.2 - fixes compatibility with Moodle 1.8, by a modification in line 74 of reso
 V0.3 - fixes a bug that caused resources not to be added to the database in some environments.
 V0.4 - fixes a compatibility problem with PHP4 (line 167 of resource.class.php). This version works with PHP4 and PHP5.
 V1.0 - a significant update, with significant updates to this readme, and changes to both browse_start.php and resource.class.php that:
-   - within the Moodle resource add/edit page, fixes the issue of the name field dragging back focus when the "browse" button is clicked
-   - fixes a harmless typo in one of language strings given in step 4 of the installation instructions
-   - adds the ability to launch the browser at a text search result (for integration with other modules, such as MrCute). (See customisation section below.)
-   - adds the ability to customise the text of the "add to Moodle course" button within Noodle. (See customisation section below.)
-   - uses a new URL within browse_start.php (noodle.nln.ac.uk rather than www.nln.ac.uk). (Both point to the same location, but the new URL helps us with tracking usage.)
+- within the Moodle resource add/edit page, fixes the issue of the name field dragging back focus when the "browse" button is clicked
+- fixes a harmless typo in one of language strings given in step 4 of the installation instructions
+- adds the ability to launch the browser at a text search result (for integration with other modules, such as MrCute). (See customisation section below.)
+- adds the ability to customise the text of the "add to Moodle course" button within Noodle. (See customisation section below.)
+- uses a new URL within browse_start.php (noodle.nln.ac.uk rather than www.nln.ac.uk). (Both point to the same location, but the new URL helps us with tracking usage.)
 V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at http://nln.ac.uk/support/?p=FAQ#i_Transition for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
-V2.0 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
-     - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
-     - supports backup/restore functionality, including restoring from a Moodle 1.9 backup (see "Installation" section below).
-     - incompatible framed and embedded display options removed.
+V2.2 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
+- includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
+- supports backup/restore functionality, including restoring from a Moodle 1.9 backup (see "Installation" section below).
+- incompatible framed and embedded display options removed.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
 
@@ -57,7 +56,7 @@ The GPL license confers no rights to the www.nln.ac.uk site itself (including th
 
 Support
 -------
-Noodle was developed by Xtensis during their role as developers of the service, and was released free of charge as a (hopefully) useful additional service to the NLN Materials community. As of July 23rd, Xtensis have no ongoing involvement in developing or supporting the NLN service, and as such, there is no ongoing formal support for Noodle. A dedicated thread on the Moodle.org forums has been set up at [http://moodle.org/mod/forum/discuss.php?d=105505].
+Noodle was developed by Xtensis during their role as developers of the service, and was released free of charge as a (hopefully) useful additional service to the NLN Materials community. As of July 23rd 2011, Xtensis have no ongoing involvement in developing or supporting the NLN service, and as such, there is no ongoing formal support for Noodle. A dedicated thread on the Moodle.org forums has been set up at [http://moodle.org/mod/forum/discuss.php?d=105505].
 
 
 Installation
