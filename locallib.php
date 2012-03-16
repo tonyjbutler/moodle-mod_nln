@@ -134,7 +134,7 @@ function nln_display_frame($nln, $cm, $course) {
         $courseshortname = format_string($course->shortname, true, array('context' => $coursecontext));
         $title = strip_tags($courseshortname.': '.format_string($nln->name));
         $framesize = $config->framesize;
-        $modulename = s(get_string('modulename','mod_nln'));
+        $modulename = s(get_string('modulename','nln'));
         $dir = get_string('thisdirection', 'langconfig');
 
         $extframe = <<<EOF

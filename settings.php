@@ -42,19 +42,19 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configcheckbox('nln/requiremodintro',
         get_string('requiremodintro', 'admin'), get_string('configrequiremodintro', 'admin'), 0));
     $settings->add(new admin_setting_configmultiselect('nln/displayoptions',
-        get_string('displayoptions', 'mod_nln'), get_string('configdisplayoptions', 'mod_nln'),
+        get_string('displayoptions', 'nln'), get_string('configdisplayoptions', 'nln'),
         $defaultdisplayoptions, $displayoptions));
 
     //--- modedit defaults -----------------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('nlnmodeditdefaults',
         get_string('modeditdefaults', 'admin'), get_string('condifmodeditdefaults', 'admin')));
     $settings->add(new admin_setting_configselect_with_advanced('nln/display',
-        get_string('displayselect', 'mod_nln'), get_string('displayselectexplain', 'mod_nln'),
+        get_string('displayselect', 'nln'), get_string('displayselectexplain', 'nln'),
         array('value'=>RESOURCELIB_DISPLAY_AUTO, 'adv'=>false), $displayoptions));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupwidth',
-        get_string('popupwidth', 'mod_nln'), get_string('popupwidthexplain', 'mod_nln'),
+        get_string('popupwidth', 'nln'), get_string('popupwidthexplain', 'nln'),
         array('value'=>840, 'adv'=>false), PARAM_INT, 7));
     $settings->add(new admin_setting_configtext_with_advanced('nln/popupheight',
-        get_string('popupheight', 'mod_nln'), get_string('popupheightexplain', 'mod_nln'),
+        get_string('popupheight', 'nln'), get_string('popupheightexplain', 'nln'),
         array('value'=>530, 'adv'=>false), PARAM_INT, 7));
 }
