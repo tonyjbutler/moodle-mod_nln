@@ -1,14 +1,14 @@
 Readme file for the NLN Materials Moodle Browser (codename: Noodle)
-====== ==== === === === ========= ====== ======= ========== =======
+===================================================================
 
 Introduction
 ------------
-Noodle is a plug-in module for Moodle systems that allows Moodle users to find and use NLN Materials with a minimum of effort. Noodle was developed by Xtensis.co.uk - the developers of the NLN materials delivery site, as an additional service to our users.
+Noodle is a plug-in module for Moodle systems that allows Moodle users to find and use NLN Materials with a minimum of effort. Noodle was developed by Xtensis.co.uk - the developers of the NLN Materials delivery site, as an additional service to our users.
 The benefits include:
 For administrators:
 - no need to create and maintain a repository.
 - works alongside but completely independently of local repositories.
-- simple installation. Does not require "IMS Repository" module or its variants.
+- simple installation.
 - materials are still hosted on the nln.ac.uk site, so users will see all updates and fixes, and you may save bandwidth
 
 For practitioners:
@@ -16,7 +16,7 @@ For practitioners:
 - powerful search and browse functionality, specifically tailored for the NLN Materials (e.g. browse by level)
 - easy access to supporting information, such as tutor guides, LO-specific FAQ questions etc.
 - no need to leave the Moodle interface
-- no need to understand Scorm and related technologies
+- no need to understand SCORM and related technologies
 - no need to deal with any downloading/unzipping/uploading/or installing of files
 
 More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
@@ -25,7 +25,7 @@ This is version 2.2.
 
 
 Version Info
-------- ----
+------------
 V0.1 - first release.
 V0.2 - fixes compatibility with Moodle 1.8, by a modification in line 74 of resource.class.php, checking that the function build_navigation() exists.
 V0.3 - fixes a bug that caused resources not to be added to the database in some environments.
@@ -36,7 +36,7 @@ V1.0 - a significant update, with significant updates to this readme, and change
 - adds the ability to launch the browser at a text search result (for integration with other modules, such as MrCute). (See customisation section below.)
 - adds the ability to customise the text of the "add to Moodle course" button within Noodle. (See customisation section below.)
 - uses a new URL within browse_start.php (noodle.nln.ac.uk rather than www.nln.ac.uk). (Both point to the same location, but the new URL helps us with tracking usage.)
-V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at http://nln.ac.uk/support/?p=FAQ#i_Transition for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
+V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at [http://nln.ac.uk/support/?p=FAQ#i_Transition] for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
 V2.2 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
 - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
 - supports backup/restore functionality, including restoring from a Moodle 1.9 backup (see "Installation" section below).
@@ -75,8 +75,8 @@ $ cd /path/to/your/moodle/
 $ echo /mod/nln/ >> .git/info/exclude
 
 Installing from a zip archive downloaded from [http://moodle.org/plugins/pluginversions.php?plugin=mod_nln]:
-1. Create a new folder in your Moodle install called "nln" within "/mod/".
-2. Unzip the contents of the downloaded zip archive into it.
+1. Download and unzip the appropriate release for your version of Moodle.
+2. Place the extracted "nln" folder in your "/mod/" subdirectory.
 
 Whichever of the above methods you use to get the module code in place, the final step is to visit your Site Administration > Notifications page in a browser to invoke the installation script and make the necessary database changes.
 
@@ -85,7 +85,7 @@ A diff patch named moodle1_restore.patch is supplied in the root directory of th
 
 
 Updating Moodle
--------- ------
+---------------
 If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/22/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
 $ cd /path/to/your/moodle/
 $ git pull
@@ -99,5 +99,5 @@ In this case you will also need to re-apply the patch as above, if you still nee
 
 
 Informing Moodle users
---------- ------ -----
+----------------------
 After installing, we suggest notifying your Moodle course editors and letting them know what's available. You can find simplified instructions - which presume no prior knowledge of the NLN materials or the main NLN site - at [http://nln.ac.uk/?p=Noodle]. It is suggested that Moodle admins take the concise instructions given there and distribute them, with any relevant modifications, to their users.
