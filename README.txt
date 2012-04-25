@@ -21,7 +21,7 @@ For practitioners:
 
 More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
 
-This is version 2.2.2.
+This is version 2.2.3.
 
 
 Version Info
