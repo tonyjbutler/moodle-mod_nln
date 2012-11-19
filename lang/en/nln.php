@@ -44,6 +44,11 @@ $string['framesize'] = 'Frame height';
 $string['invalidstorednln'] = 'Cannot display this learning object, ID is invalid.';
 $string['invalidnln'] = 'Entered learning object ID is invalid';
 $string['modulename'] = 'NLN learning object';
+$string['modulename_help'] = 'The NLN materials are small, flexible \'bite-sized\' episodes of learning. They are not whole courses but are designed to support a wide range of subject and topic areas. The materials adopt a range of approaches involving some knowledge acquisition, a chance to practice and absorb, and some form of assessment to check that the learning has been understood and the learning outcome(s) achieved.
+
+The materials give learners things to do and a chance to think for themselves. They are designed to be fun. Learners can make mistakes but can try again. There is plenty of in-built help if they get stuck and opportunities to go back and revise. Many of the materials include games or quizzes. Accessibility options are available on many of the materials to suit learners\' individual needs. The materials are also designed to appeal to the different learning styles of students.
+
+This activity module allows teachers to find and add NLN learning objects to their Moodle courses with a minimum of effort.';
 $string['modulenameplural'] = 'NLN learning objects';
 $string['neverseen'] = 'Never seen';
 $string['nln_browse'] = 'Browse the NLN Materials';
