@@ -21,7 +21,7 @@ For practitioners:
 
 More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
 
-This is version 2.4.
+This is version 2.5.
 
 
 Version Info
@@ -43,6 +43,7 @@ V2.2 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. T
 - incompatible framed and embedded display options removed.
 V2.3 - added 'mod/nln:addinstance' capability and 'modulename_help' string for Moodle 2.3.
 V2.4 - added help string for Learning Object ID field and replaced icon with higher quality 24px version for Moodle 2.4.
+V2.5 - modified update form to add call to setType() for Learning Object ID field and fix broken auto-fill function for description field.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
 
@@ -66,12 +67,12 @@ Installation
 Note, if you are upgrading an existing Noodle installation, please see the "Version Info" section above.
 
 Installing from the Git repository (recommended if you installed Moodle from Git):
-Follow the instructions at [http://docs.moodle.org/24/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository], e.g. for the Moodle 2.4.x code:
+Follow the instructions at [http://docs.moodle.org/25/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository], e.g. for the Moodle 2.5.x code:
 $ cd /path/to/your/moodle/
 $ cd mod
 $ git clone git://github.com/tonyjbutler/moodle-mod_nln.git nln
 $ cd nln
-$ git checkout -b MOODLE_24_STABLE origin/MOODLE_24_STABLE
+$ git checkout -b MOODLE_25_STABLE origin/MOODLE_25_STABLE
 $ git branch -d master
 $ cd /path/to/your/moodle/
 $ echo /mod/nln/ >> .git/info/exclude
@@ -88,7 +89,7 @@ A diff patch named moodle1_restore.patch is supplied in the root directory of th
 
 Updating Moodle
 ---------------
-If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/24/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
+If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/25/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
 $ cd /path/to/your/moodle/
 $ git pull
 $ cd mod/nln
