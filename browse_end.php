@@ -23,7 +23,7 @@ function init()
 			};
 		d.getElementById('id_loid').value = '<?php echo $xtid ?>';
 		d.getElementById('id_name').value = '<?php echo $title ?>';
-	  	var gBox = d.getElementById('general');
+	  	var gBox = d.getElementById('id_general');
 	  	if(gBox)
 	  		{
 	  		var	fram = gBox.getElementsByTagName('iframe');
