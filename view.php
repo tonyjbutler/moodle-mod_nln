@@ -47,7 +47,13 @@ require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 require_capability('mod/nln:view', $context);
 
-add_to_log($course->id, 'nln', 'view', 'view.php?id='.$cm->id, $nln->id, $cm->id);
+$params = array(
+    'context' => $context,
+    'objectid' => $nln->id
+);
+$event = \mod_nln\event\course_module_viewed::create($params);
+$event->add_record_snapshot('nln', $nln);
+$event->trigger();
 
 // Update 'viewed' state if required by completion system
 $completion = new completion_info($course);
