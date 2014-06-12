@@ -159,57 +159,6 @@ function nln_delete_instance($id) {
 }
 
 /**
- * Return use outline
- * @param object $course
- * @param object $user
- * @param object $mod
- * @param object $nln
- * @return object|null
- */
-function nln_user_outline($course, $user, $mod, $nln) {
-    global $DB;
-
-    if ($logs = $DB->get_records('log', array('userid'=>$user->id, 'module'=>'nln',
-                                              'action'=>'view', 'info'=>$nln->id), 'time ASC')) {
-
-        $numviews = count($logs);
-        $lastlog = array_pop($logs);
-
-        $result = new stdClass();
-        $result->info = get_string('numviews', '', $numviews);
-        $result->time = $lastlog->time;
-
-        return $result;
-    }
-    return NULL;
-}
-
-/**
- * Return use complete
- * @param object $course
- * @param object $user
- * @param object $mod
- * @param object $nln
- */
-function nln_user_complete($course, $user, $mod, $nln) {
-    global $CFG, $DB;
-
-    if ($logs = $DB->get_records('log', array('userid'=>$user->id, 'module'=>'nln',
-                                              'action'=>'view', 'info'=>$nln->id), 'time ASC')) {
-        $numviews = count($logs);
-        $lastlog = array_pop($logs);
-
-        $strmostrecently = get_string('mostrecently');
-        $strnumviews = get_string('numviews', '', $numviews);
-
-        echo "$strnumviews - $strmostrecently ".userdate($lastlog->time);
-
-    } else {
-        print_string('neverseen', 'nln');
-    }
-}
-
-/**
  * Returns the users with data in one nln
  *
  * @todo: deprecated - to be deleted in 2.2
