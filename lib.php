@@ -307,7 +307,7 @@ function nln_export_contents($cm, $baseurl) {
     global $CFG, $DB;
     require_once("$CFG->dirroot/mod/nln/locallib.php");
     $contents = array();
-    $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+    $context = context_module::instance($cm->id);
 
     $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
     $nln = $DB->get_record('nln', array('id'=>$cm->instance), '*', MUST_EXIST);

@@ -127,10 +127,10 @@ function nln_display_frame($nln, $cm, $course) {
 
     } else {
         $config = get_config('nln');
-        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+        $context = context_module::instance($cm->id);
         $exteurl = nln_get_full_url($nln);
         $navurl = "$CFG->wwwroot/mod/nln/view.php?id=$cm->id&amp;frameset=top";
-        $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
+        $coursecontext = context_course::instance($course->id);
         $courseshortname = format_string($course->shortname, true, array('context' => $coursecontext));
         $title = strip_tags($courseshortname.': '.format_string($nln->name));
         $framesize = $config->framesize;

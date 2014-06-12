@@ -44,7 +44,7 @@ if ($u) {  // Two ways to specify the module
 $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
 
 require_course_login($course, true, $cm);
-$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+$context = context_module::instance($cm->id);
 require_capability('mod/nln:view', $context);
 
 add_to_log($course->id, 'nln', 'view', 'view.php?id='.$cm->id, $nln->id, $cm->id);
