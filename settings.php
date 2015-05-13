@@ -40,7 +40,7 @@ if ($ADMIN->fulltree) {
 
     //--- general settings -----------------------------------------------------------------------------------
     $settings->add(new admin_setting_configcheckbox('nln/requiremodintro',
-        get_string('requiremodintro', 'admin'), get_string('configrequiremodintro', 'admin'), 0));
+        get_string('requiremodintro', 'admin'), get_string('requiremodintro_desc', 'admin'), 0));
     $settings->add(new admin_setting_configmultiselect('nln/displayoptions',
         get_string('displayoptions', 'nln'), get_string('configdisplayoptions', 'nln'),
         $defaultdisplayoptions, $displayoptions));
