@@ -23,6 +23,15 @@ function init()
 			};
 		d.getElementById('id_loid').value = '<?php echo $xtid ?>';
 		d.getElementById('id_name').value = '<?php echo $title ?>';
+        var editor = d.getElementById('id_introeditor');
+        if (editor) {
+            var atto = d.getElementById('id_introeditoreditable');
+            if (atto) {
+                atto.innerHTML = '<?php echo $description ?>';
+            } else {
+                editor.innerHTML = '<?php echo $description ?>';
+            }
+        }
 	  	var gBox = d.getElementById('id_general');
 	  	if(gBox)
 	  		{
