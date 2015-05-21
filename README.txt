@@ -21,11 +21,11 @@ For practitioners:
 
 More information about Noodle is available at [http://www.nln.ac.uk/?p=Noodle]. Information about updates and new versions is now available at [http://moodle.org/plugins/view.php?plugin=mod_nln].
 
-This is version 2.7.
+This is version 2.9.
 
 
-Version Info
-------------
+Changelog
+---------
 V0.1 - first release.
 V0.2 - fixes compatibility with Moodle 1.8, by a modification in line 74 of resource.class.php, checking that the function build_navigation() exists.
 V0.3 - fixes a bug that caused resources not to be added to the database in some environments.
@@ -46,6 +46,7 @@ V2.4 - added help string for Learning Object ID field and replaced icon with hig
 V2.5 - modified update form to add call to setType() for Learning Object ID field and fix broken auto-fill function for description field.
 V2.6 - replaced all occurrences of the deprecated get_context_instance() function with context_xxxx::instance().
 V2.7 - updated module to use the new activity logging events API in Moodle 2.7.
+V2.9 - added LO description auto-fill support for Atto editor and plain textarea.
 
 Note that since the bulk of functionality happens on the NLN site, changes in functionality may occur within the Noodle pop-up without requiring a new version of Noodle or a new download. Any significant changes of functionality will be explained on the Noodle page of the NLN website.
 
@@ -69,12 +70,12 @@ Installation
 Note, if you are upgrading an existing Noodle installation, please see the "Version Info" section above.
 
 Installing from the Git repository (recommended if you installed Moodle from Git):
-Follow the instructions at [http://docs.moodle.org/27/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository], e.g. for the Moodle 2.7.x code:
+Follow the instructions at [http://docs.moodle.org/29/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository], e.g. for the Moodle 2.9.x code:
 $ cd /path/to/your/moodle/
 $ cd mod
 $ git clone git://github.com/tonyjbutler/moodle-mod_nln.git nln
 $ cd nln
-$ git checkout -b MOODLE_27_STABLE origin/MOODLE_27_STABLE
+$ git checkout -b MOODLE_29_STABLE origin/MOODLE_29_STABLE
 $ git branch -d master
 $ cd /path/to/your/moodle/
 $ echo /mod/nln/ >> .git/info/exclude
@@ -91,7 +92,7 @@ A diff patch named moodle1_restore.patch is supplied in the root directory of th
 
 Updating Moodle
 ---------------
-If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/27/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
+If you installed Moodle and the NLN module from Git you can run the following commands to update both (see [http://docs.moodle.org/29/en/Git_for_Administrators#Installing_a_contributed_extension_from_its_Git_repository]):
 $ cd /path/to/your/moodle/
 $ git pull
 $ cd mod/nln
