@@ -29,5 +29,5 @@ $plugin->version   = 2015052100;       // The current module version (Date: YYYY
 $plugin->requires  = 2015051100;       // Requires this Moodle version
 $plugin->component = 'mod_nln';        // Full name of the plugin (used for diagnostics)
 $plugin->cron      = 0;
-$plugin->release   = '2.9.0 (Build: 20150521)';
-$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = '3.0dev (Build: 20150521)';
+$plugin->maturity  = MATURITY_ALPHA;
