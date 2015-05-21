@@ -39,7 +39,7 @@ V1.0 - a significant update, with significant updates to this readme, and change
 V1.1 - due to changes in the NLN site on July 23rd 2011 (see the FAQ at [http://nln.ac.uk/support/?p=FAQ#i_Transition] for more info). Since the site no longer requires authentication, this has been removed from this version. However, V1.0 will continue to work fine, so there's no need to upgrade from V1.0 to V1.1.
 V2.2 - conversion from Moodle 1.x resource type to Moodle 2.x activity module. Tested with Moodle 2.2.
 - includes a migration script to automatically convert any existing NLN resources in a Moodle 1.9 instance during an upgrade to Moodle 2.
-- supports backup/restore functionality, including restoring from a Moodle 1.9 backup (see "Installation" section below).
+- supports backup/restore functionality, including restoring from a Moodle 1.9 backup.
 - incompatible framed and embedded display options removed.
 V2.3 - added 'mod/nln:addinstance' capability and 'modulename_help' string for Moodle 2.3.
 V2.4 - added help string for Learning Object ID field and replaced icon with higher quality 24px version for Moodle 2.4.
@@ -86,9 +86,6 @@ Installing from a zip archive downloaded from [http://moodle.org/plugins/pluginv
 
 Whichever of the above methods you use to get the module code in place, the final step is to visit your Site Administration > Notifications page in a browser to invoke the installation script and make the necessary database changes.
 
-Note: if you wish to restore NLN resources from course backups created with Moodle 1.9.x, you will also need to make a slight modification to your /mod/resource/backup/moodle1/lib.php file.
-A diff patch named moodle1_restore.patch is supplied in the root directory of the NLN module to facilitate this modification. Please see the instructions at [http://docs.moodle.org/dev/How_to_apply_a_patch] if you need help applying the patch.
-
 
 Updating Moodle
 ---------------
@@ -98,10 +95,7 @@ $ git pull
 $ cd mod/nln
 $ git pull
 
-In this case it will not be necessary to apply the diff patch again.
-
 If you installed from a zip archive you will need to repeat the installation procedure using the appropriate zip file downloaded from [http://moodle.org/plugins/pluginversions.php?plugin=mod_nln] for your new Moodle version.
-In this case you will also need to re-apply the patch as above, if you still need the functionality to restore from Moodle 1.9 backups.
 
 
 Informing Moodle users
